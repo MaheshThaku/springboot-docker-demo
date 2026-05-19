@@ -7,21 +7,25 @@ pipeline {
 
     stages {
 
-        stage('Clone') {
+        stage('Checkout') {
             steps {
-                git url: 'https://github.com/MaheshThaku/springboot-docker-demo.git'
+                checkout scm
             }
         }
 
-        stage('Build') {
+        stage('Build Maven Project') {
             steps {
-                sh 'mvn clean package -DskipTests'
+                dir('DockerProject') {
+                    sh 'mvn clean package -DskipTests'
+                }
             }
         }
 
         stage('Docker Build') {
             steps {
-                sh 'docker build -t springboot-app .'
+                dir('DockerProject') {
+                    sh 'docker build -t springboot-app .'
+                }
             }
         }
     }
