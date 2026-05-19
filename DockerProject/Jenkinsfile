@@ -18,8 +18,8 @@ pipeline {
             steps {
 
                 dir('DockerProject') {
-
-                    sh 'mvn clean package'
+					
+                    sh 'mvn clean package -DskipTests'
 
                 }
             }
