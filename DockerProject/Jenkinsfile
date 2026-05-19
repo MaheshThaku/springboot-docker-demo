@@ -16,13 +16,23 @@ pipeline {
 
         stage('Build Project') {
             steps {
-                sh 'mvn clean package'
+
+                dir('DockerProject') {
+
+                    sh 'mvn clean package'
+
+                }
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t springboot-app .'
+
+                dir('DockerProject') {
+
+                    sh 'docker build -t springboot-app .'
+
+                }
             }
         }
 
