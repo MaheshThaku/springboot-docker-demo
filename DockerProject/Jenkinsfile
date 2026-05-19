@@ -1,5 +1,4 @@
 pipeline {
-
     agent any
 
     tools {
@@ -16,23 +15,13 @@ pipeline {
 
         stage('Build Project') {
             steps {
-
-                dir('DockerProject') {
-					
-                    sh 'mvn clean package -DskipTests'
-
-                }
+                sh 'mvn clean package -DskipTests'
             }
         }
 
         stage('Build Docker Image') {
             steps {
-
-                dir('DockerProject') {
-
-                    sh 'docker build -t springboot-app .'
-
-                }
+                sh 'docker build -t springboot-app .'
             }
         }
 
