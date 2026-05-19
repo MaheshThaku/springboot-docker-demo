@@ -7,23 +7,22 @@ pipeline {
 
     stages {
 
-        stage('Clone Code') {
+        stage('Checkout') {
             steps {
-                git 'https://github.com/MaheshThaku/springboot-docker-demo.git'
+                checkout scm
             }
         }
 
-        stage('Build Project') {
+        stage('Build') {
             steps {
                 sh 'mvn clean package -DskipTests'
             }
         }
 
-        stage('Build Docker Image') {
+        stage('Docker Build') {
             steps {
                 sh 'docker build -t springboot-app .'
             }
         }
-
     }
 }
