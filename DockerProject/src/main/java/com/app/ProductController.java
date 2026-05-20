@@ -1,5 +1,7 @@
 package com.app;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,6 +37,11 @@ public class ProductController {
 	@PutMapping("/update")
 	public Product updateProduct(@RequestBody Product product, long id ) {
 		return productService.updateProduct(id, product);		
+	}
+	
+	@GetMapping("/getAllProducts")
+	public List<Product> getAll(){
+		return productService.getAll();
 	}
 	
 }

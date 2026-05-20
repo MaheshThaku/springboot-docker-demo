@@ -1,5 +1,6 @@
 package com.app;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,4 +60,9 @@ public class ProductService {
 
         return null;
     }
+
+	public List<Product> getAll() {
+		// TODO Auto-generated method stub
+		return productRepo.findAll();
+	}
 }
